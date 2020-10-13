@@ -45,13 +45,13 @@ class Rectangle extends Component{
 	}
 
 	open(){
-		if(this.isOpen) return;
+		if(this.isOpen || this.f !== this.frameRate) return;
 		this.isOpen = true;
 		this.f = 0;
 	}
 
 	close(){
-		if(!this.isOpen) return;
+		if(!this.isOpen || this.f !== this.frameRate) return;
 		this.isOpen = false;
 		this.f = 0;
 	}
@@ -89,9 +89,9 @@ function draw(){
 }
 
 function keyPressed() {
-	if (keyCode  === RIGHT_ARROW && rec.f === rec.frameRate) {
+	if (keyCode  === RIGHT_ARROW) {
 		rec.open();
-	} else if (keyCode  === LEFT_ARROW && rec.f === rec.frameRate) {
+	} else if (keyCode  === LEFT_ARROW) {
 		rec.close();
 	}
 }
